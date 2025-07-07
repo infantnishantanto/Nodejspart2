@@ -1,0 +1,105 @@
+<% var tTop='<table><thead><tr><th>First Name</th><th>Last Name</th></tr></thead><tbody>' 
+   var tBot='</tbody></table>' %>
+    <%-include('layouts/header')-%>
+
+        <body>
+            <%-include('layouts/nav')-%>
+                <main>
+                    <h2>Customer Data</h2>
+                    <% if(typeof datas !='undefined' ){ if(datas.length !=0){%>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Province</th>
+                                    <th>Address</th>
+                                    <th>City</th>
+                                    <th>Phone Number</th>
+                                    <th>Email</th>
+                                    <th>Postal Code</th>
+                                    <th>Football Shoe Quantity</th>
+                                    <th>Football Socks</th>
+                                    <th>Football Gloves Quantity</th>
+                                    <th>Total</th>
+                                    <th>Shipping Cost</th>
+                                    <th>Tax</th>
+                                    <th>Final Total</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <%for(let dt of datas){ %>
+                                    <% 
+                                    var footballShoe = 0;
+                                    if(dt.footballShoe) {
+                                        footballShoe = dt.footballShoe;
+                                    } %>
+                                    <% 
+                                    var footballSocks = 0;
+                                    if(dt.footballSocks) {
+                                        footballSocks = dt.footballSocks;
+                                    } %>
+                                   <%
+                                    var footballGloves = 0;
+                                    if(dt.footballGloves) {
+                                        footballGloves = dt.footballGloves;
+                                    } %>
+                                    <tr>
+                                        <td>
+                                            <%=dt.name%>
+                                        </td>
+                                        <td>
+                                            <%=dt.province%>
+                                        </td>
+                                        <td>
+                                            <%=dt.address%>
+                                        </td>
+                                        <td>
+                                            <%=dt.city%>
+                                        </td>
+                                        <td>
+                                            <%=dt.phoneNumber%>
+                                        </td>
+                                        <td>
+                                            <%=dt.email%>
+                                        </td>
+                                        <td>
+                                            <%=dt.postalCode%>
+                                        </td>
+                                        <td>
+                                            <%=footballShoe%>
+                                        </td>
+                                        <td>
+                                            <%=footballSocks%>
+                                        </td>
+                                        <td>
+                                            <%=footballGloves%>
+                                        </td>
+                                        <td>
+                                            $<%=dt.total%>
+                                        </td>
+                                        <td>
+                                            $<%=dt.shipping%>
+                                        </td>
+                                        <td>
+                                            $<%=dt.tax%>
+                                        </td>
+                                        <td>
+                                            $<%=dt.finalTotal%>
+                                        </td>
+                                        <td> <a href="/delete/<%=dt._id%>&delete">Delete</a></td>
+                                    </tr>
+                                    <%}%>
+
+                            </tbody>
+                        </table>
+                        <%}else{ %>
+                            <h2>No Data Found</h2>
+                            <% } } %>
+
+
+
+                </main>
+                <%-include('layouts/footer')-%>
+        </body>
+
+        </html>

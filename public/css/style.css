@@ -1,0 +1,48 @@
+body {
+    width:900px;
+    margin:auto;
+}
+header nav{
+    padding:10px;
+    text-align: center;
+}
+form
+{
+    margin: auto;
+    width: 700px;
+}
+div{
+    padding: 5px;
+}
+legend{
+    text-align: center;
+}
+div{
+    
+    display:flex;
+    justify-content: left;
+    
+}
+label{
+    display: inline-block;
+    width: 150px;
+}
+input{
+    margin-left:5px;
+}
+.err{
+    margin:0px;
+    color: red;
+}
+aside{
+    border: 2px solid black;
+    margin: 5px;
+}
+#p1{
+    color: red;
+}
+td,th,tr,table{
+    border: 2px solid black;
+    border-collapse: collapse;
+    
+}

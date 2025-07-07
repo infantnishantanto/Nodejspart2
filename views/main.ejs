@@ -1,0 +1,177 @@
+<%
+  var nameVal = '',emailVal = '',nameErr='',emailErr='',addVal='',addErr='',cityVal='',cityErr='',provVal='',provErr='',pNumbVal='',pNumbErr='';
+  var fShoeVal='', fShoeErr='', fSocksVal='',fSocksErr='',fGloveVal='',fGloveErr='', shippingVal='', shippingErr='', postalCodeVal='',postalCodeErr='';
+
+  if(typeof errors !== 'undefined'){
+    
+    for(var err of errors){
+      switch(err.path){
+        case 'name':
+            nameVal = err.value;
+            nameErr = err.msg;
+            break;
+        case 'address':
+            addVal = err.value;
+            addErr = err.msg;
+            break;
+        case 'city':
+            cityVal = err.value;
+            cityErr = err.msg;
+            break;
+        case 'province':
+            provVal = err.value;
+            provErr = err.msg;
+            break;
+        case 'phoneNumber':
+            pNumbVal = err.value;
+            pNumbErr = err.msg;
+            break;
+        case 'email':
+            emailVal = err.value;
+            emailErr = err.msg;
+            break;
+        case 'postalCode':
+            postalCodeVal = err.value;
+            postalCodeErr = err.msg;
+            break;
+        case 'footballShoe':
+            fShoeVal = err.value;
+            fShoeErr = err.msg;
+            break;
+        case 'footballSocks':
+            fSocksVal = err.value;
+            fSocksErr = err.msg;
+            break;
+        case 'footballGloves':
+            fGloveVal = err.value;
+            fGloveErr = err.msg;
+            break;
+        case 'shipping':
+            shippingVal=err.value;
+            shippingErr= err.msg;
+      }
+    }
+  }
+%>
+
+<%- include('layouts/header')-%>
+<body>
+    <%- include('layouts/nav')-%>
+    <section>
+        <main>
+            <form name="myForm" action="/" method="post">
+                <fieldset>
+                    <legend> Form Information</legend>
+                    <div>
+                        <label> Name: </label>
+                        <input type="text" name="name" value="<%=nameVal%>" placeholder="Enter Your Name"/>
+                    </div>
+                    <p class="err"> <%=nameErr%> </p>
+                    <div>
+                        <label> Address: </label>
+                        <input type="text" name="address" value="<%=addVal%>" placeholder="Enter Your Adress"/>
+                    </div>
+                    <p class="err"> <%=addErr%> </p>
+                    <div>
+                        <label> City: </label>
+                        <input type="text" name="city" value="<%=cityVal%>" placeholder="Enter Your City"/>
+                    </div>
+                    <p class="err"> <%=cityErr%> </p>
+                    <div>
+                        <label> Province: </label>
+                        <select name="province">
+                            <option value="">Choose a Province</option>                
+                            <option value="Ab">Alberta</option>
+                            <option value="Bc">British Columbia</option>
+                            <option value="Man">Manitoba</option>
+                            <option value="Nb">New Brunswick</option>
+                            <option value="Nl">Newfoundland and Labrador</option>
+                            <option value="Nt">Northwest Territories</option>
+                            <option value="Ns">Nova Scotia</option>
+                            <option value="Nu">Nunavut</option>
+                            <option value="On">Ontario</option>
+                            <option value="Qb">Quebec</option>
+                            <option value="Pel">Prince Edward Island</option>
+                            <option value="Sas">Saskatchewan</option>
+                            <option value="Yk">Yukon</option>
+                    </select>
+                    </div>
+                    <p class="err"> <%=provErr%> </p>
+                    <div>
+                        <label> Phone Number: </label>
+                        <input type="text" name="phoneNumber" value="<%=pNumbVal%>" placeholder="XXXXXXXXXX"/>
+                    </div>
+                    <p class="err"> <%=pNumbErr%> </p>
+                    <div>
+                        <label> Email: </label>
+                        <input type="text" name="email" value="<%=emailVal%>" placeholder="email@domain.com"/>
+                    </div>
+                    <p class="err"> <%=emailErr%> </p>
+                    <div>
+                        <label> Postal Code: </label>
+                        <input type="text" name="postalCode" value="<%=postalCodeVal%>"/>
+                    </div>
+                    <p class="err"> <%=postalCodeErr%> </p>
+                    <div>
+                        <label> Football Shoes($15): </label>
+                        <input type="text" name="footballShoe" value="<%=fShoeVal%>" placeholder="Enter The Quantity"/>
+                    </div>
+                    <p class="err"> <%=fShoeErr%> </p>
+                    <div>
+                        <label> Football Socks($5): </label>
+                        <input type="text" name="footballSocks" value="<%=fSocksVal%>" placeholder="Enter the Quantity"/>
+                    </div>
+                    <p class="err"> <%=fSocksErr%> </p>
+                    <div>
+                        <label> Football Gloves($10): </label>
+                        <input type="text" name="footballGloves" value="<%=fGloveVal%>" placeholder="Enter the Quantity"/>
+                    </div>
+                    <p class="err"> <%=fGloveErr%> </p>
+                    <div>
+                        <label> Deliver Time </label>
+                        <select name="shipping">
+                            <option value="">Choose an Option </option>
+                            <option value="1 Day">1 Day($3)</option>
+                            <option value="2 Days">2 Days($2)</option>
+                            <option value="3 Days">3 Days($1)</option>
+                        </select>
+                    </div>
+                    <p class="err"> <%=shippingErr%> </p>
+                    <div>
+                        <input type="submit" value="Place Order"/>
+                        <input type="reset" name="Reset"/>
+                    </div>
+                    </fieldset>
+            </form>
+        </main>
+    </section>
+    <section>
+        <aside>
+            <p id="result"> The Result of the Form will appear here: </p>
+                <% if(typeof name !== 'undefined'){%>
+                    <p class="rr"> Name:<%=name%></p>
+                    <p class="rr"> Address:<%=address%></p>
+                    <p class="rr">City: <%=city%></p>
+                    <p class="rr">Province: <%=province%></p>
+                    <p class="rr">Phone Number: <%=phoneNumber%></p>
+                    <p class="rr">Email: <%=email%></p>
+                    <p class="rr">Postal Code: <%=postalCode%></p>
+                    <p class="rr">Quantity of Football shoes: <%=footballShoe%></p>
+                    <p class="rr"> Quantity of Football socks: <%=footballSocks%></p>
+                    <p class="rr">Quantity of Football gloves <%=footballGloves%></p>
+                    <p class="rr">Total: $<%=total%></p>
+                    <p class="rr">Shipping Charges: $<%=shipping%></p>
+                    <p class="rr">Tax: $<%=tax%></p>
+                    <p class="rr">Final Total: $<%=finalTotal%></p>
+                                
+                <%}%>
+
+                <% if(typeof errorMessage !== 'undefined'){%>
+                    <p id="p1"><%=errorMessage%></p>
+                <%}%> 
+            
+        </aside>
+    </section>
+</body>
+<%- include('layouts/footer')-%>
+
