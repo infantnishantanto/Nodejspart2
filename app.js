@@ -47,7 +47,8 @@ const Shop = mongoose.model('shop', {
     finalTotal: Number
 
 });
-mongoose.connect('mongodb://localhost:27017/Assignment4')
+mongoose.connect('mongodb+srv://infantnishant666:Qwertyuio123@infant.vqk35pq.mongodb.net/assignment4?retryWrites=true&w=majority&appName=Infant')
+
 
 var phoneReg = /^\d{10}$/;
 var emailReg = /^[a-zA-Z0-9]+@[a-zA-Z0-9]+\.com$/;
