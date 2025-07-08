@@ -1,3 +1,4 @@
+require('dotenv').config();
 const express = require('express');
 const path = require('path');
 const { check, validationResult } = require('express-validator');
@@ -47,8 +48,12 @@ const Shop = mongoose.model('shop', {
     finalTotal: Number
 
 });
-mongoose.connect('mongodb+srv://infantnishant666:Qwertyuio123@infant.vqk35pq.mongodb.net/assignment4?retryWrites=true&w=majority&appName=Infant')
-
+mongoose.connect(process.env.MONGO_URI, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true
+})
+.then(() => console.log("✅ MongoDB Atlas connected"))
+.catch(err => console.error("❌ Connection error:", err));
 
 var phoneReg = /^\d{10}$/;
 var emailReg = /^[a-zA-Z0-9]+@[a-zA-Z0-9]+\.com$/;
